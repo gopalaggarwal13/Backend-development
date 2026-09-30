@@ -53,6 +53,7 @@ This repository contains:
 | Experiment | Description | Report | Live Demo |
 |------------|-------------|--------|-----------|
 | **Experiment 1** | Create a Web Page using HTML5 Elements | [📄 View Report](./LAB/EXP-1/report.html) | [🌐 Open Project](./LAB/EXP-1/index.html) |
+| 2 | Create a Web Page with all types of Cascading Style Sheets | CO2 | 📄 [Report](./LAB/EXP-2/report.html) | 🌐 [View](./LAB/EXP-2/index.html) |
 
 > More experiments will be added during the semester.
 

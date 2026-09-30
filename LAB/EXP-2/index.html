@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 2 — a CSS showcase demonstrating inline, internal and external CSS, selectors, box model, Flexbox, Grid, responsive design, specificity, inheritance, transitions and animations.">
+  <meta name="keywords" content="CSS, inline CSS, internal CSS, external CSS, selectors, box model, flexbox, grid, responsive design, animation">
+  <meta name="author" content="Gopal Aggarwal">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gopalaggarwal.github.io/backend-development/LAB/EXP-2/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CSS Showcase — Experiment 2">
+  <meta property="og:description" content="A practical demonstration of CSS types, selectors, layouts, responsiveness and visual effects.">
+  <title>CSS Showcase — Experiment 2 | Backend Development Lab</title>
+
+  <style>
+    .internal-demo {
+      border-left: 4px solid var(--rust);
+      background: rgba(164, 67, 43, 0.08);
+    }
+
+    .internal-demo strong {
+      color: var(--rust-deep);
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead" id="top">
+      <div class="masthead-text">
+        <p class="tagline">BACKEND DEVELOPMENT LAB · EXPERIMENT 02</p>
+        <h1>Cascading Style Sheets</h1>
+        <p class="lede">
+          A practical CSS specimen sheet demonstrating three CSS application methods,
+          selectors, the box model, modern layouts, responsiveness, specificity,
+          inheritance, transitions and animations.
+        </p>
+        <p class="byline">
+          <strong>Gopal Aggarwal</strong> · B.Tech CSE · SAP ID 590018885 · UPES Dehradun<br>
+          Published <time datetime="2026-09-30">30 September 2026</time>
+        </p>
+        <nav class="nav" aria-label="Experiment sections">
+          <a href="#types">CSS Types</a>
+          <a href="#selectors">Selectors</a>
+          <a href="#box-model">Box Model</a>
+          <a href="#layouts">Layouts</a>
+          <a href="#effects">Effects</a>
+        </nav>
+      </div>
+      <div class="accession" aria-label="Experiment number">
+        <span class="hole"></span>
+        <span class="accession-label">EXP</span>
+        <strong>02</strong>
+        <small>CSS</small>
+        <small class="accession-sap-id">SAP ID 590018885</small>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="types">
+        <div class="section-heading">
+          <span class="section-number">I</span>
+          <div>
+            <p class="eyebrow">Application methods</p>
+            <h2>Three types of CSS</h2>
+          </div>
+        </div>
+        <p class="intro">
+          The same language can be applied directly to an element, inside the document head,
+          or from a separate stylesheet. This page deliberately uses all three approaches.
+        </p>
+
+        <div class="cards three-up">
+          <article class="card specimen-card">
+            <div class="card-index">01</div>
+            <h3>Inline CSS</h3>
+            <p style="color: var(--rust-deep); font-weight: 700; letter-spacing: 0.04em;">
+              This sentence is styled with an inline <code>style</code> attribute.
+            </p>
+            <pre><code>&lt;p style="color: var(--rust-deep);"&gt;</code></pre>
+            <p class="muted">Best for a very specific one-off style; difficult to maintain at scale.</p>
+          </article>
+
+          <article class="card specimen-card internal-demo">
+            <div class="card-index">02</div>
+            <h3>Internal CSS</h3>
+            <p><strong>This card receives its special treatment from a &lt;style&gt; block.</strong></p>
+            <pre><code>&lt;style&gt;
+.internal-demo { ... }
+&lt;/style&gt;</code></pre>
+            <p class="muted">Useful when styles belong to one HTML document.</p>
+          </article>
+
+          <article class="card specimen-card external-demo">
+            <div class="card-index">03</div>
+            <h3>External CSS</h3>
+            <p>This card and almost the entire page are styled through <code>style.css</code>.</p>
+            <pre><code>&lt;link rel="stylesheet"
+      href="style.css"&gt;</code></pre>
+            <p class="muted">Best for reusable, maintainable styles across multiple pages.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="selectors">
+        <div class="section-heading">
+          <span class="section-number">II</span>
+          <div>
+            <p class="eyebrow">Targeting elements</p>
+            <h2>Selectors</h2>
+          </div>
+        </div>
+        <p class="intro">
+          Selectors identify which HTML elements receive a CSS rule. The examples below show
+          element, class, ID, universal, grouping, descendant and pseudo-class selectors.
+        </p>
+
+        <div class="selector-grid">
+          <article class="card selector-card">
+            <span class="selector-chip">element</span>
+            <h3>Element selector</h3>
+            <p>Targets every element of a given type.</p>
+            <pre><code>p { line-height: 1.75; }</code></pre>
+          </article>
+
+          <article class="card selector-card class-selector">
+            <span class="selector-chip">.class</span>
+            <h3>Class selector</h3>
+            <p>This card uses the reusable <code>.class-selector</code> class.</p>
+            <pre><code>.card { padding: 1.25rem; }</code></pre>
+          </article>
+
+          <article class="card selector-card" id="id-selector-demo">
+            <span class="selector-chip">#id</span>
+            <h3>ID selector</h3>
+            <p>This card is uniquely styled using an ID selector.</p>
+            <pre><code>#id-selector-demo { ... }</code></pre>
+          </article>
+
+          <article class="card selector-card grouped-selector">
+            <span class="selector-chip">h1, h2, h3</span>
+            <h3>Grouping selector</h3>
+            <p>One declaration can target several selectors at once.</p>
+            <pre><code>h1, h2, h3 { ... }</code></pre>
+          </article>
+
+          <article class="card selector-card descendant-selector">
+            <span class="selector-chip">.card p</span>
+            <h3>Descendant selector</h3>
+            <p>The paragraph is inside a card, so the descendant rule can target it.</p>
+            <pre><code>.card p { ... }</code></pre>
+          </article>
+
+          <article class="card selector-card hover-selector">
+            <span class="selector-chip">:hover</span>
+            <h3>State selector</h3>
+            <p>Hover over this card to see the <code>:hover</code> rule.</p>
+            <pre><code>.hover-selector:hover { ... }</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="box-model">
+        <div class="section-heading">
+          <span class="section-number">III</span>
+          <div>
+            <p class="eyebrow">Space around every element</p>
+            <h2>CSS box model</h2>
+          </div>
+        </div>
+        <p class="intro">
+          Every normal element can be understood as a rectangular box containing content,
+          surrounded by padding, border and margin.
+        </p>
+
+        <div class="box-model-layout">
+          <div class="box-model-visual" aria-label="CSS box model diagram">
+            <div class="box margin-box">
+              <span class="box-label">MARGIN</span>
+              <div class="box border-box">
+                <span class="box-label">BORDER</span>
+                <div class="box padding-box">
+                  <span class="box-label">PADDING</span>
+                  <div class="content-box">CONTENT</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card explanation-card">
+            <dl>
+              <div><dt>Content</dt><dd>The actual text, image or child content.</dd></div>
+              <div><dt>Padding</dt><dd>Space between content and the border.</dd></div>
+              <div><dt>Border</dt><dd>The visible edge surrounding the padding.</dd></div>
+              <div><dt>Margin</dt><dd>Outer space separating the element from neighbours.</dd></div>
+            </dl>
+            <pre><code>.box {
+  width: 180px;
+  padding: 24px;
+  border: 5px solid;
+  margin: 24px;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="layouts">
+        <div class="section-heading">
+          <span class="section-number">IV</span>
+          <div>
+            <p class="eyebrow">Modern layout systems</p>
+            <h2>Flexbox &amp; Grid</h2>
+          </div>
+        </div>
+
+        <div class="layout-block">
+          <div class="subheading">
+            <span>04A</span>
+            <h3>Flexbox</h3>
+          </div>
+          <p>
+            Flexbox is a one-dimensional layout model. This example uses direction, alignment,
+            spacing and wrapping to arrange cards.
+          </p>
+          <div class="flex-demo" aria-label="Flexbox demonstration">
+            <div class="layout-tile">A</div>
+            <div class="layout-tile">B</div>
+            <div class="layout-tile">C</div>
+            <div class="layout-tile">D</div>
+          </div>
+          <pre><code>.flex-demo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}</code></pre>
+        </div>
+
+        <div class="layout-block">
+          <div class="subheading">
+            <span>04B</span>
+            <h3>CSS Grid</h3>
+          </div>
+          <p>
+            Grid is a two-dimensional layout model. Rows and columns can be defined explicitly
+            and adjusted at responsive breakpoints.
+          </p>
+          <div class="grid-demo" aria-label="CSS Grid demonstration">
+            <div class="layout-tile featured">01</div>
+            <div class="layout-tile">02</div>
+            <div class="layout-tile">03</div>
+            <div class="layout-tile">04</div>
+            <div class="layout-tile">05</div>
+            <div class="layout-tile">06</div>
+          </div>
+          <pre><code>.grid-demo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}</code></pre>
+        </div>
+      </section>
+
+      <section class="section" id="responsive">
+        <div class="section-heading">
+          <span class="section-number">V</span>
+          <div>
+            <p class="eyebrow">Adapting to the viewport</p>
+            <h2>Responsive design</h2>
+          </div>
+        </div>
+        <div class="responsive-demo card">
+          <div>
+            <span class="device-label">DESKTOP</span>
+            <strong>Three-column layout</strong>
+          </div>
+          <div>
+            <span class="device-label">TABLET</span>
+            <strong>Two-column layout</strong>
+          </div>
+          <div>
+            <span class="device-label">MOBILE</span>
+            <strong>Single-column layout</strong>
+          </div>
+        </div>
+        <pre><code>@media (max-width: 760px) {
+  .grid-demo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .grid-demo {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+        <p class="muted">
+          Resize the browser window or open the page on a phone to observe the layout changes.
+        </p>
+      </section>
+
+      <section class="section" id="specificity">
+        <div class="section-heading">
+          <span class="section-number">VI</span>
+          <div>
+            <p class="eyebrow">The cascade</p>
+            <h2>Specificity &amp; inheritance</h2>
+          </div>
+        </div>
+        <div class="specificity-grid">
+          <article class="card">
+            <h3>Specificity</h3>
+            <p class="specificity-target" id="specificity-target">This sentence demonstrates selector priority.</p>
+            <pre><code>p { ... }
+.specificity-target { ... }
+#specificity-target { ... }</code></pre>
+            <p class="muted">An ID selector is more specific than a class selector, which is more specific than an element selector.</p>
+          </article>
+          <article class="card inherited">
+            <h3>Inheritance</h3>
+            <p>Text properties such as <strong>font-family</strong> and <strong>color</strong> can inherit from a parent unless a child rule overrides them.</p>
+            <div class="inherit-child">This child inherits the section's font and colour.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="effects">
+        <div class="section-heading">
+          <span class="section-number">VII</span>
+          <div>
+            <p class="eyebrow">Motion and interaction</p>
+            <h2>Transitions &amp; animations</h2>
+          </div>
+        </div>
+        <div class="effects-grid">
+          <article class="card effect-card">
+            <span class="selector-chip">transition</span>
+            <h3>Hover transition</h3>
+            <p>Move your pointer over the stamp.</p>
+            <div class="transition-stamp" aria-hidden="true">CSS</div>
+            <pre><code>transition: transform .3s ease;
+transform: translateY(-8px);</code></pre>
+          </article>
+          <article class="card effect-card">
+            <span class="selector-chip">@keyframes</span>
+            <h3>Animation</h3>
+            <p>The marker continuously moves between two positions.</p>
+            <div class="animation-track" aria-hidden="true">
+              <div class="animated-marker">02</div>
+            </div>
+            <pre><code>@keyframes drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(150px); }
+}</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section result-section" id="result">
+        <div class="section-heading">
+          <span class="section-number">VIII</span>
+          <div>
+            <p class="eyebrow">Experiment record</p>
+            <h2>Result &amp; observation</h2>
+          </div>
+        </div>
+        <div class="result-card">
+          <p>
+            The web page successfully demonstrates inline, internal and external CSS along with
+            selectors, the box model, Flexbox, Grid, responsive media queries, specificity,
+            inheritance, transitions and keyframe animation.
+          </p>
+          <ul>
+            <li>External CSS controls the main visual system.</li>
+            <li>Inline and internal CSS are intentionally included as visible demonstrations.</li>
+            <li>Flexbox and Grid provide different layout strategies.</li>
+            <li>Media queries adapt the interface to smaller screens.</li>
+            <li>Transitions and animations provide visual feedback and motion.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>Gopal Aggarwal</strong>
+        <span>·</span>
+        <span>SAP ID 590018885</span>
+      </div>
+      <div>Experiment 02 · Backend Development Lab</div>
+      <div>
+        <a href="./report.md">Read the lab report</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
