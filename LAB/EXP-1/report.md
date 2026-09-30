@@ -7,7 +7,7 @@ layout: default
 
 **Course:** Backend Development Lab
 **Course Outcome Mapped:** CO2 — Create and build web pages and applications
-**Student:** Krish Pawar · B.Tech CSE · UPES Dehradun
+**Student:** Gopal Aggarwal · B.Tech CSE · UPES Dehradun
 **Date:** 22 August 2026
 
 **Live output:** [`index.html`](./index.html) · **Source:** [`index.html`](./index.html)
