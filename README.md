@@ -48,7 +48,7 @@ This repository contains all coursework related to the **Backend Development** s
 | Exp No. | Experiment | Course Outcome | Report | Live Demo |
 |----------|------------|---------------|--------|-----------|
 | 1 | Create a Web Page using HTML5 Elements | CO2 | [📄 Report](./LAB/EXP-1/report.md) | [🌐 View](https://gopalaggarwal13.github.io/backend-development/LAB/EXP-1/index.html) |
-| 2 | Create a Web Page with all types of Cascading Style Sheets | 📄 [View Report](./LAB/EXP-2/report.html) | 🌐 [Open Project](./LAB/EXP-2/index.html) |
+| 2 | Create a Web Page with all types of Cascading Style Sheets | CO2 | 📄 [View Report](./LAB/EXP-2/report.html) | 🌐 [Open Project](./LAB/EXP-2/index.html) |
 
 > More experiments will be added throughout the semester.
 
