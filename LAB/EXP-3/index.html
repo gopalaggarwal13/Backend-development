@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 3 — a responsive web page demonstrating flexible layouts, CSS Grid, Flexbox and media queries.">
+  <meta name="author" content="Gopal Aggarwal">
+  <meta name="keywords" content="HTML5, CSS3, responsive design, Flexbox, CSS Grid, media queries">
+  <title>Responsive Web Page — Experiment 03 | Backend Development Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead" id="top">
+      <div class="masthead-text">
+        <p class="tagline">Backend Development Lab · Experiment 03</p>
+        <h1>Responsive Web Design</h1>
+        <p class="lede">One thoughtful layout, shaped to fit every screen. This page uses semantic HTML, CSS Grid, Flexbox and media queries to adapt from desktop to mobile.</p>
+        <p class="byline"><strong>Gopal Aggarwal</strong> · B.Tech CSE · SAP ID 590018885 · UPES Dehradun</p>
+        <nav class="nav" aria-label="Experiment sections">
+          <a href="#top">Overview</a>
+          <a href="#features">Core concepts</a>
+          <a href="#approach">Responsive approach</a>
+          <a href="#result">Observation</a>
+        </nav>
+      </div>
+      <div class="hero-art">
+        <div class="device-card" aria-hidden="true">
+          <div class="device-screen">
+            <div class="screen-top"><span></span><span></span><span></span></div>
+            <div class="screen-content">
+              <div class="mini-banner"></div>
+              <div class="mini-lines"><i></i><i></i><i></i></div>
+              <div class="mini-cards"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-content">
+              <div class="phone-banner"></div>
+              <div class="phone-line"></div>
+              <div class="phone-line short"></div>
+              <div class="phone-card"></div>
+            </div>
+          </div>
+        </div>
+        <div class="accession" aria-label="Experiment 03, responsive web page">
+          <span class="hole"></span>
+          <span class="accession-label">Experiment</span>
+          <strong>03</strong>
+          <small>Responsive Web</small>
+          <small class="accession-sap-id">SAP ID 590018885</small>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="features">
+        <div class="section-heading">
+          <span class="section-number">I</span>
+          <div>
+            <p class="eyebrow">The building blocks</p>
+            <h2>Built for every screen</h2>
+          </div>
+        </div>
+        <p class="intro">A responsive interface combines meaningful structure with flexible layout rules. These four techniques work together to keep the page clear at every size.</p>
+        <div class="feature-grid">
+          <article class="card feature-card">
+            <span class="card-index">01</span>
+            <div class="feature-mark">&lt;/&gt;</div>
+            <h3>Semantic HTML</h3>
+            <p>Landmarks and clear page structure make content easier to navigate and understand.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="card-index">02</span>
+            <div class="feature-mark">↔</div>
+            <h3>Flexible layouts</h3>
+            <p>Flexbox aligns navigation and actions while allowing them to wrap when space is tight.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="card-index">03</span>
+            <div class="feature-mark">▦</div>
+            <h3>CSS Grid</h3>
+            <p>Grid creates balanced columns that rearrange naturally for tablets and phones.</p>
+          </article>
+          <article class="card feature-card">
+            <span class="card-index">04</span>
+            <div class="feature-mark">⌁</div>
+            <h3>Media queries</h3>
+            <p>Responsive breakpoints tune spacing, typography and composition for smaller screens.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section approach-section" id="approach">
+        <div class="section-heading">
+          <span class="section-number">II</span>
+          <div>
+            <p class="eyebrow">A considered layout</p>
+            <h2>Responsive by design</h2>
+          </div>
+        </div>
+        <div class="approach-grid">
+          <div>
+            <p class="approach-copy">The page begins with room for a two-column desktop layout. As the viewport narrows, the content stacks, cards reduce to fewer columns and type scales down. Nothing depends on a framework or JavaScript.</p>
+            <ul class="check-list">
+              <li>Fluid spacing and readable type</li>
+              <li>Flexible columns and card layouts</li>
+              <li>Navigation that wraps on narrow screens</li>
+              <li>Visible keyboard focus and reduced motion</li>
+            </ul>
+          </div>
+          <div class="code-card">
+            <div class="code-heading"><span>Layout adjustment</span><span class="code-language">CSS</span></div>
+            <pre><code>@media (max-width: 760px) {
+  .approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section result-section" id="result">
+        <div class="section-heading">
+          <span class="section-number">III</span>
+          <div>
+            <p class="eyebrow">Experiment record</p>
+            <h2>Result &amp; observation</h2>
+          </div>
+        </div>
+        <div class="result-card">
+          <div>
+            <p class="result-label">What this page demonstrates</p>
+            <p class="result-copy">A single interface can remain legible and useful across desktop, tablet and mobile screens when its layout is built to flex with the available space.</p>
+          </div>
+          <a class="result-link" href="#top">Back to overview <span aria-hidden="true">↑</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-student"><strong>Gopal Aggarwal</strong><span>SAP ID 590018885</span></div>
+      <div class="footer-course">Experiment 03 · Backend Development Lab</div>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </div>
+</body>
+</html>
