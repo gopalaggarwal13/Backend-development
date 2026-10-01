@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 04 lab assessment: build the same responsive page using Bootstrap and Tailwind CSS and compare their approaches.">
+  <meta name="author" content="Gopal Aggarwal">
+  <title>Experiment 04 — Bootstrap &amp; Tailwind CSS | Backend Development Lab</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4efe5;
+      --surface: #fffdf8;
+      --ink: #282820;
+      --ink-soft: #686457;
+      --rule: #d8cfbf;
+      --rust: #a4432b;
+      --rust-deep: #782f20;
+      --ochre: #d3a94c;
+      --sage: #66765b;
+      --font-body: Georgia, "Times New Roman", serif;
+      --font-ui: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 1.5rem;
+    }
+
+    body {
+      margin: 0;
+      padding: clamp(1rem, 4vw, 3.5rem) 1rem;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.7 var(--font-body);
+    }
+
+    a {
+      color: var(--rust-deep);
+      text-underline-offset: 0.2em;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--ochre);
+      outline-offset: 3px;
+    }
+
+    .sheet {
+      width: min(100%, 1100px);
+      margin-inline: auto;
+      padding: clamp(1.2rem, 5vw, 4.5rem);
+      background: var(--surface);
+      box-shadow: 0 16px 55px rgb(52 40 22 / 12%);
+    }
+
+    .masthead {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 2rem;
+      margin: calc(clamp(1.2rem, 5vw, 4.5rem) * -1);
+      margin-bottom: 3rem;
+      padding: clamp(2rem, 6vw, 4.5rem);
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 84% 20%, rgb(211 169 76 / 18%), transparent 31%),
+        linear-gradient(125deg, #3f5e42 0%, #354c39 62%, #2c4530 100%);
+      color: #f8f3e9;
+      border-bottom: 5px solid var(--ochre);
+    }
+
+    .masthead::after {
+      position: absolute;
+      right: 11%;
+      top: 18%;
+      width: 128px;
+      height: 150px;
+      border-right: 5px solid rgb(224 199 127 / 48%);
+      border-left: 5px solid rgb(164 67 43 / 55%);
+      transform: skewY(-18deg);
+      content: "";
+      pointer-events: none;
+    }
+
+    .masthead-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow,
+    .section-label,
+    .framework-label,
+    .tag-label,
+    .table-label {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: #e0c77f;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      line-height: 1.2;
+    }
+
+    .masthead h1 {
+      max-width: 740px;
+      margin: 0 0 1rem;
+      color: #fffaf0;
+      font-family: var(--font-body);
+      font-size: clamp(2.45rem, 5.8vw, 4.7rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+    }
+
+    .lede {
+      max-width: 700px;
+      margin: 0 0 1.25rem;
+      color: #e3dfd3;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+    }
+
+    .byline {
+      margin: 0 0 1.4rem;
+      color: #d7d2c6;
+      font: 0.82rem/1.65 var(--font-ui);
+    }
+
+    .byline strong {
+      color: #e0c77f;
+    }
+
+    .masthead-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .masthead-nav a {
+      padding: 0.38rem 0.75rem;
+      border: 1px solid rgb(255 250 240 / 26%);
+      color: #fffaf0;
+      font: 0.76rem var(--font-ui);
+      text-decoration: none;
+    }
+
+    .masthead-nav a:hover {
+      border-color: #e0c77f;
+      background: rgb(255 250 240 / 10%);
+    }
+
+    .accession {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      width: 122px;
+      min-height: 142px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      border: 1px solid rgb(224 199 127 / 68%);
+      border-left: 4px solid #e0c77f;
+      background: rgb(255 253 248 / 7%);
+      color: #e0c77f;
+      font-family: var(--font-ui);
+    }
+
+    .accession .hole {
+      position: absolute;
+      top: 11px;
+      width: 9px;
+      height: 9px;
+      border: 1px solid rgb(224 199 127 / 68%);
+      border-radius: 50%;
+    }
+
+    .tag-label {
+      font-size: 0.63rem;
+    }
+
+    .accession strong {
+      font: 3.5rem/1 var(--font-body);
+    }
+
+    .accession small {
+      font-size: 0.6rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .section {
+      padding: 0.25rem 0 2.8rem;
+      margin-bottom: 2.6rem;
+      border-bottom: 1px solid var(--rule);
+      scroll-margin-top: 1.5rem;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-number {
+      display: grid;
+      width: 2.4rem;
+      height: 2.4rem;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      color: var(--rust);
+      font: 700 0.72rem var(--font-ui);
+    }
+
+    .section-label {
+      margin: 0 0 0.2rem;
+      color: var(--rust);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .objective-copy {
+      max-width: 830px;
+      margin: 0 0 1.4rem 3.4rem;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .framework-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      padding: clamp(1.3rem, 3vw, 2rem);
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--sage);
+      background: var(--surface);
+      box-shadow: 0 5px 14px rgb(52 40 22 / 4%);
+    }
+
+    .framework-card:not(.tailwind-card) {
+      background: linear-gradient(135deg, #fffdf8, #f1f4eb);
+    }
+
+    .framework-card.tailwind-card {
+      border-top-color: var(--rust);
+      background: linear-gradient(135deg, #fffdf8, #f5ece4);
+    }
+
+    .framework-label {
+      margin: 0 0 0.5rem;
+      color: var(--sage);
+    }
+
+    .tailwind-card .framework-label {
+      color: var(--rust);
+    }
+
+    .framework-card h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.5rem;
+    }
+
+    .framework-card p:not(.framework-label) {
+      margin: 0 0 1rem;
+      color: var(--ink-soft);
+    }
+
+    .framework-card ul {
+      display: grid;
+      gap: 0.4rem;
+      margin: 0 0 1.4rem;
+      padding-left: 1.2rem;
+      color: var(--ink-soft);
+    }
+
+    .framework-link {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      margin-top: auto;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--sage);
+      background: var(--sage);
+      color: #fff;
+      font: 700 0.88rem var(--font-ui);
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .tailwind-card .framework-link {
+      border-color: var(--rust);
+      background: var(--rust);
+    }
+
+    .framework-link:hover {
+      color: #fff;
+      box-shadow: 0 8px 20px rgb(52 40 22 / 13%);
+      transform: translateY(-2px);
+    }
+
+    .comparison-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 580px;
+      border-collapse: collapse;
+      background: var(--surface);
+      text-align: left;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #e9e1d3;
+      vertical-align: top;
+    }
+
+    .comparison-table thead th {
+      background: var(--sage);
+      color: #fff;
+      font: 700 0.75rem var(--font-ui);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .comparison-table thead th:nth-child(3) {
+      background: var(--rust);
+    }
+
+    .comparison-table tbody th {
+      width: 21%;
+      color: var(--rust-deep);
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+    }
+
+    .comparison-table td {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem 1.5rem;
+      padding-top: 0.4rem;
+      color: var(--ink-soft);
+      font: 0.78rem var(--font-ui);
+    }
+
+    .footer-student {
+      display: grid;
+      gap: 0.15rem;
+    }
+
+    .footer-student strong {
+      color: var(--ink);
+    }
+
+    @media (max-width: 760px) {
+      .masthead::after {
+        display: none;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      .sheet {
+        width: 100%;
+        padding: 1.15rem;
+      }
+
+      .masthead {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+        margin: -1.15rem -1.15rem 2.4rem;
+        padding: clamp(1.7rem, 7vw, 2.7rem) clamp(1.15rem, 5vw, 2rem);
+      }
+
+      .accession {
+        width: 100%;
+        min-height: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.55rem;
+        padding: 0.7rem 1rem;
+        transform: none;
+      }
+
+      .accession .hole {
+        display: none;
+      }
+
+      .accession strong {
+        font-size: 2rem;
+      }
+
+      .objective-copy {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .framework-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .framework-card {
+        padding: 1.25rem;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .sheet {
+        padding: 0.9rem;
+      }
+
+      .masthead {
+        margin: -0.9rem -0.9rem 2rem;
+      }
+
+      .masthead h1 {
+        font-size: 2.15rem;
+      }
+
+      .masthead-nav a {
+        padding: 0.34rem 0.55rem;
+        font-size: 0.7rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="masthead" id="top">
+      <div class="masthead-copy">
+        <p class="eyebrow">Backend Development Lab · Experiment 04</p>
+        <h1>Responsive Web Pages with Bootstrap and Tailwind CSS</h1>
+        <p class="lede">Build the same responsive page using two CSS frameworks — Bootstrap and Tailwind CSS — and understand their philosophies, common classes, and trade-offs.</p>
+        <p class="byline"><strong>Gopal Aggarwal</strong> · B.Tech CSE · SAP ID 590018885 · UPES Dehradun</p>
+        <nav class="masthead-nav" aria-label="Assessment pages">
+          <a href="#objective">Objective</a>
+          <a href="#frameworks">Framework pages</a>
+          <a href="#comparison">Comparison</a>
+        </nav>
+      </div>
+      <div class="accession" aria-label="Experiment 04, CSS frameworks assessment">
+        <span class="hole"></span>
+        <span class="tag-label">Experiment</span>
+        <strong>04</strong>
+        <small>CSS Frameworks</small>
+        <small>SAP ID 590018885</small>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="objective">
+        <div class="section-heading">
+          <span class="section-number">I</span>
+          <div>
+            <p class="section-label">Lab assessment objective</p>
+            <h2>One responsive page, two approaches</h2>
+          </div>
+        </div>
+        <p class="objective-copy">Create the same responsive interface twice: once with Bootstrap's predefined grid, components and utilities, and once with Tailwind CSS utility classes. Compare how each framework handles layout, responsive behavior, customization and trade-offs.</p>
+      </section>
+
+      <section class="section" id="frameworks">
+        <div class="section-heading">
+          <span class="section-number">II</span>
+          <div>
+            <p class="section-label">Choose an implementation</p>
+            <h2>Explore both framework pages</h2>
+          </div>
+        </div>
+        <div class="framework-grid">
+          <article class="framework-card">
+            <p class="framework-label">Framework 01 · Component-based</p>
+            <h3>Bootstrap</h3>
+            <p>Build with a convention-based grid, reusable components and responsive utility classes.</p>
+            <ul>
+              <li>Container, row and column grid</li>
+              <li>Navbar, buttons and card patterns</li>
+              <li>Breakpoint-aware layout classes</li>
+            </ul>
+            <a class="framework-link" href="bootstrap.html">Open Bootstrap page <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="framework-card tailwind-card">
+            <p class="framework-label">Framework 02 · Utility-first</p>
+            <h3>Tailwind CSS</h3>
+            <p>Compose the same interface from small utility classes applied directly in the markup.</p>
+            <ul>
+              <li>Utilities for spacing, color and type</li>
+              <li>Responsive variants such as <code>md:</code> and <code>lg:</code></li>
+              <li>Flexible Grid and Flexbox utilities</li>
+            </ul>
+            <a class="framework-link" href="tailwind.html">Open Tailwind page <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="comparison">
+        <div class="section-heading">
+          <span class="section-number">III</span>
+          <div>
+            <p class="section-label">Assessment focus</p>
+            <h2>Compare the trade-offs</h2>
+          </div>
+        </div>
+        <div class="comparison-wrap" role="region" aria-label="Bootstrap and Tailwind comparison" tabindex="0">
+          <table class="comparison-table">
+            <thead>
+              <tr><th scope="col">Aspect</th><th scope="col">Bootstrap</th><th scope="col">Tailwind CSS</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Style approach</th><td>Predefined components and a convention-based design system.</td><td>Composable utility classes that describe individual styles.</td></tr>
+              <tr><th scope="row">Markup</th><td>Short component classes with framework defaults.</td><td>More classes in markup, with direct control over each element.</td></tr>
+              <tr><th scope="row">Responsive layout</th><td>Grid columns and responsive utility classes.</td><td>Breakpoint prefixes combined with Grid and Flexbox utilities.</td></tr>
+              <tr><th scope="row">Trade-off</th><td>Fast consistent interfaces; customization may require overriding defaults.</td><td>Precise composition; markup can become dense and needs a consistent design system.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-student"><strong>Gopal Aggarwal</strong><span>SAP ID 590018885</span></div>
+      <span>Experiment 04 · Backend Development Lab</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </div>
+</body>
+</html>

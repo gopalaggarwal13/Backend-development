@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 04 Bootstrap implementation: the responsive assessment page built with Bootstrap grid, components and utilities.">
+  <meta name="author" content="Gopal Aggarwal">
+  <title>Experiment 04 — Bootstrap Implementation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    :root {
+      --paper: #f4efe5;
+      --surface: #fffdf8;
+      --ink: #282820;
+      --ink-soft: #686457;
+      --rule: #d8cfbf;
+      --rust: #a4432b;
+      --rust-deep: #782f20;
+      --ochre: #d3a94c;
+      --sage: #66765b;
+      --font-body: Georgia, "Times New Roman", serif;
+      --font-ui: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      --bs-body-bg: var(--paper);
+      --bs-body-color: var(--ink);
+      --bs-primary: var(--sage);
+      --bs-primary-rgb: 102, 118, 91;
+      --bs-link-color: var(--rust-deep);
+      --bs-link-hover-color: var(--rust);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      padding: clamp(0rem, 3vw, 2.5rem) 1rem;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.7;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--ochre);
+      outline-offset: 3px;
+    }
+
+    .sheet {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: clamp(1rem, 4vw, 3rem);
+      background: var(--surface);
+      box-shadow: 0 16px 55px rgb(52 40 22 / 12%);
+    }
+
+    .navbar {
+      margin: calc(clamp(1rem, 4vw, 3rem) * -1);
+      margin-bottom: 0;
+      padding: 0.55rem clamp(1rem, 4vw, 3rem);
+      background: var(--surface) !important;
+    }
+
+    .navbar-brand {
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-weight: 800;
+      letter-spacing: 0.09em;
+    }
+
+    .navbar-brand span {
+      color: var(--sage);
+    }
+
+    .navbar .nav-link {
+      color: #4b4b40;
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+    }
+
+    .navbar .nav-link:hover {
+      color: var(--rust);
+    }
+
+    .btn-primary {
+      --bs-btn-bg: var(--sage);
+      --bs-btn-border-color: var(--sage);
+      --bs-btn-hover-bg: #536248;
+      --bs-btn-hover-border-color: #536248;
+      --bs-btn-active-bg: #536248;
+      --bs-btn-active-border-color: #536248;
+      font-family: var(--font-ui);
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      margin: 0 calc(clamp(1rem, 4vw, 3rem) * -1) 3rem;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 83% 18%, rgb(211 169 76 / 18%), transparent 31%),
+        linear-gradient(125deg, #3f5e42 0%, #354c39 65%, #2c4530 100%);
+      color: #f8f3e9;
+      border-bottom: 5px solid var(--ochre);
+    }
+
+    .hero .container {
+      max-width: 100%;
+    }
+
+    .hero .row {
+      min-height: 330px;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: 13%;
+      top: 17%;
+      width: 120px;
+      height: 150px;
+      border-right: 5px solid rgb(224 199 127 / 48%);
+      border-left: 5px solid rgb(164 67 43 / 55%);
+      transform: skewY(-18deg);
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-copy,
+    .accession {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow,
+    .section-label,
+    .tag-label {
+      font-family: var(--font-ui);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      color: #e0c77f;
+    }
+
+    .hero h1 {
+      max-width: 670px;
+      color: #fffaf0;
+      font-family: var(--font-body);
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .hero .lead {
+      max-width: 640px;
+      color: #e3dfd3;
+      font-size: 1.05rem;
+    }
+
+    .byline {
+      color: #d7d2c6;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+    }
+
+    .byline strong {
+      color: #e0c77f;
+    }
+
+    .accession {
+      display: flex;
+      width: 116px;
+      min-height: 148px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      margin-left: auto;
+      border: 1px solid rgb(224 199 127 / 68%);
+      border-left: 4px solid #e0c77f;
+      background: rgb(255 253 248 / 7%);
+      color: #e0c77f;
+      font-family: var(--font-ui);
+    }
+
+    .accession .hole {
+      position: absolute;
+      top: 10px;
+      width: 9px;
+      height: 9px;
+      border: 1px solid rgb(224 199 127 / 68%);
+      border-radius: 50%;
+    }
+
+    .accession strong {
+      font: 3.2rem/1 var(--font-body);
+    }
+
+    .accession small {
+      font-size: 0.56rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .section-label {
+      margin-bottom: 0.25rem;
+      color: var(--rust);
+    }
+
+    .section-title {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+    }
+
+    .feature-card {
+      border: 1px solid var(--rule) !important;
+      border-top: 3px solid var(--sage) !important;
+      border-radius: 0;
+      background: var(--surface);
+      box-shadow: 0 5px 14px rgb(52 40 22 / 4%);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 12px 26px rgb(52 40 22 / 10%);
+      transform: translateY(-4px);
+    }
+
+    .feature-card:nth-child(2) {
+      border-top-color: var(--ochre) !important;
+    }
+
+    .feature-card:nth-child(3) {
+      border-top-color: var(--rust) !important;
+    }
+
+    .feature-card .feature-index {
+      color: var(--rust);
+      font-family: var(--font-ui);
+    }
+
+    .feature-card p,
+    .approach-copy {
+      color: var(--ink-soft);
+    }
+
+    .soft-section {
+      margin: 0 calc(clamp(1rem, 4vw, 3rem) * -1) 2.5rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      background: #f2eee4;
+    }
+
+    .list-group-item {
+      border-color: #e2dac9;
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+    }
+
+    .code-sample {
+      overflow: hidden;
+      border: 1px solid #48483c;
+      background: #29291f;
+      box-shadow: 0 12px 30px rgb(52 40 22 / 12%);
+    }
+
+    .code-sample pre {
+      margin: 0;
+      padding: 1.4rem;
+      overflow-x: auto;
+      color: #e8dfc9;
+      font: 0.82rem/1.8 "SFMono-Regular", Consolas, monospace;
+    }
+
+    .code-heading {
+      padding: 0.75rem 1rem;
+      background: #37372b;
+      color: #e0c77f;
+      font: 700 0.66rem var(--font-ui);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .assessment-note {
+      border-left: 4px solid var(--rust);
+      background: #f6f1e7;
+      color: var(--ink-soft);
+    }
+
+    .site-footer {
+      color: var(--ink-soft);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+    }
+
+    .site-footer strong {
+      color: var(--ink);
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 0;
+      }
+
+      .sheet {
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .navbar {
+        margin: -1rem -1rem 0;
+        padding-inline: 1rem;
+      }
+
+      .hero {
+        margin: 0 -1rem 2.2rem;
+      }
+
+      .hero .row {
+        min-height: 0;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .accession {
+        width: 100%;
+        min-height: 0;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0.7rem 1rem;
+        transform: none;
+      }
+
+      .accession .hole {
+        display: none;
+      }
+
+      .accession strong {
+        font-size: 2rem;
+      }
+
+      .soft-section {
+        margin-inline: -1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom sticky-top" aria-label="Main navigation">
+      <div class="container-fluid px-0">
+        <a class="navbar-brand" href="index.html">LAB<span>·04</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#assessmentNav" aria-controls="assessmentNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="assessmentNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#approach">Approach</a></li>
+            <li class="nav-item"><a class="btn btn-primary px-4" href="tailwind.html">Tailwind version</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero py-5 py-lg-4">
+      <div class="container py-4 py-lg-5">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-9 hero-copy">
+            <p class="eyebrow mb-3">Experiment 04 · Bootstrap implementation</p>
+            <h1>Responsive design with Bootstrap</h1>
+            <p class="lead my-4">The assessment interface rebuilt with Bootstrap's grid, reusable components and responsive utility classes.</p>
+            <p class="byline mb-4"><strong>Gopal Aggarwal</strong> · B.Tech CSE · SAP ID 590018885 · UPES Dehradun</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#features" class="btn btn-light px-4 py-2 fw-bold">Explore features</a>
+              <a href="tailwind.html" class="btn btn-outline-light px-4 py-2 fw-bold">View Tailwind version</a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="accession" aria-label="Experiment 04, Bootstrap">
+              <span class="hole"></span>
+              <span class="tag-label">Framework</span>
+              <strong>04</strong>
+              <small>Bootstrap</small>
+              <small>SAP ID 590018885</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container-fluid px-0 py-3" id="features">
+        <div class="text-center mb-5">
+          <p class="section-label">Core concepts</p>
+          <h2 class="section-title display-6">What Bootstrap provides</h2>
+          <p class="text-secondary mb-0">Reusable building blocks for the same responsive assessment page.</p>
+        </div>
+        <div class="row g-3 g-lg-4">
+          <div class="col-md-6 col-lg-3"><article class="feature-card card h-100 p-4"><span class="feature-index fs-5 fw-bold">01</span><h3 class="h5 mt-3">Grid</h3><p class="mb-0">Container, row and column classes create a responsive page structure.</p></article></div>
+          <div class="col-md-6 col-lg-3"><article class="feature-card card h-100 p-4"><span class="feature-index fs-5 fw-bold">02</span><h3 class="h5 mt-3">Components</h3><p class="mb-0">Navbar, buttons and cards provide reusable interface patterns.</p></article></div>
+          <div class="col-md-6 col-lg-3"><article class="feature-card card h-100 p-4"><span class="feature-index fs-5 fw-bold">03</span><h3 class="h5 mt-3">Utilities</h3><p class="mb-0">Spacing, display and typography classes help compose the page quickly.</p></article></div>
+          <div class="col-md-6 col-lg-3"><article class="feature-card card h-100 p-4"><span class="feature-index fs-5 fw-bold">04</span><h3 class="h5 mt-3">Breakpoints</h3><p class="mb-0">Responsive classes change columns and navigation at framework breakpoints.</p></article></div>
+        </div>
+      </section>
+
+      <section class="soft-section mt-5" id="approach">
+        <div class="row align-items-center g-4 g-lg-5">
+          <div class="col-lg-6">
+            <p class="section-label">The approach</p>
+            <h2 class="section-title display-6 mb-3">Structured and component-driven</h2>
+            <p class="approach-copy">Bootstrap follows a convention-based approach. Its predefined grid and components provide a consistent starting point for responsive pages, while utility classes cover common spacing, alignment and typography tasks.</p>
+            <ul class="list-group list-group-flush bg-transparent">
+              <li class="list-group-item bg-transparent px-0">✓ Responsive grid system</li>
+              <li class="list-group-item bg-transparent px-0">✓ Prebuilt interface components</li>
+              <li class="list-group-item bg-transparent px-0">✓ Utility classes for common styles</li>
+              <li class="list-group-item bg-transparent px-0">✓ Framework breakpoint classes</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="code-sample">
+              <div class="code-heading">Bootstrap markup</div>
+              <pre><code>&lt;div class="row g-4"&gt;
+  &lt;div class="col-md-6 col-lg-3"&gt;
+    &lt;article class="card h-100 p-4"&gt;
+      Responsive feature
+    &lt;/article&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="assessment-note p-4 p-lg-5 mb-4">
+        <p class="section-label">Assessment observation</p>
+        <p class="mb-0">Bootstrap's grid and components make common page patterns quick to assemble. Its conventions promote consistency, while custom visual details may call for theme variables or additional CSS.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer d-flex flex-wrap justify-content-between align-items-center gap-3 border-top pt-4">
+      <div><strong>Gopal Aggarwal</strong><span class="d-block">SAP ID 590018885</span></div>
+      <span>Experiment 04 · Bootstrap</span>
+      <a href="index.html">Assessment overview ↑</a>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

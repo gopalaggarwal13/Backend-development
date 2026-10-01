@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment 04 Tailwind CSS implementation: the responsive assessment page composed with utility classes and responsive variants.">
+  <meta name="author" content="Gopal Aggarwal">
+  <title>Experiment 04 — Tailwind CSS Implementation</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#f4efe5] font-serif leading-7 text-[#282820]">
+  <div class="mx-auto min-h-screen w-full max-w-6xl bg-[#fffdf8] p-4 shadow-[0_16px_55px_rgba(52,40,22,0.12)] sm:p-8 lg:p-14">
+    <nav class="flex flex-wrap items-center justify-between gap-3 border-b border-[#d8cfbf] pb-4" aria-label="Main navigation">
+      <a href="index.html" class="text-base font-extrabold tracking-[.12em] text-[#282820] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d3a94c]">LAB<span class="text-[#66765b]">·04</span></a>
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 font-sans text-sm">
+        <a href="#features" class="text-[#4b4b40] hover:text-[#a4432b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d3a94c]">Features</a>
+        <a href="#approach" class="text-[#4b4b40] hover:text-[#a4432b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d3a94c]">Approach</a>
+        <a href="bootstrap.html" class="border border-[#66765b] bg-[#66765b] px-3 py-1.5 font-bold text-white hover:bg-[#536248]">Bootstrap version</a>
+      </div>
+    </nav>
+
+    <header class="relative isolate -mx-4 mt-4 overflow-hidden border-b-4 border-b-[#d3a94c] bg-gradient-to-br from-[#4a2c25] via-[#693c2c] to-[#782f20] px-5 py-10 text-[#f8f3e9] sm:-mx-8 sm:px-8 sm:py-14 lg:-mx-14 lg:px-14 lg:py-16">
+      <div class="pointer-events-none absolute right-[12%] top-1/4 hidden h-40 w-28 -skew-y-6 border-l-[5px] border-r-[5px] border-l-[#a4432b] border-r-[#d3a94c] opacity-70 lg:block"></div>
+      <div class="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto]">
+        <div>
+          <p class="mb-3 font-sans text-[.68rem] font-bold uppercase tracking-[.14em] text-[#e0c77f]">Experiment 04 · Tailwind CSS implementation</p>
+          <h1 class="max-w-3xl font-serif text-4xl font-normal leading-[1.08] tracking-[-.045em] text-[#fffaf0] sm:text-5xl lg:text-6xl">Responsive design with Tailwind CSS</h1>
+          <p class="mt-5 max-w-2xl text-lg leading-8 text-[#e3dfd3]">The assessment interface rebuilt with utility-first styling, responsive variants and flexible layout classes.</p>
+          <p class="mt-4 font-sans text-sm leading-6 text-[#d7d2c6]"><strong class="text-[#e0c77f]">Gopal Aggarwal</strong> · B.Tech CSE · SAP ID 590018885 · UPES Dehradun</p>
+          <div class="mt-6 flex flex-wrap gap-3 font-sans text-sm font-bold">
+            <a href="#features" class="bg-[#fffdf8] px-4 py-2.5 text-[#282820] hover:bg-[#f2eee4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d3a94c]">Explore features</a>
+            <a href="bootstrap.html" class="border border-white/35 px-4 py-2.5 text-[#fffaf0] hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d3a94c]">View Bootstrap version</a>
+          </div>
+        </div>
+        <aside class="flex min-h-28 items-center gap-4 border border-[#e0c77f]/70 border-l-4 border-l-[#d3a94c] bg-white/5 px-5 py-3 font-sans text-[#e0c77f] sm:min-h-36 sm:w-44 sm:flex-col sm:justify-center sm:gap-1 sm:py-5 sm:[transform:none]" aria-label="Experiment 04, Tailwind CSS">
+          <span class="text-[.62rem] font-bold uppercase tracking-[.12em]">Framework</span>
+          <strong class="font-serif text-4xl font-normal leading-none sm:text-5xl">04</strong>
+          <span class="text-xs">Tailwind CSS</span>
+          <span class="text-[.62rem]">SAP ID 590018885</span>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="border-b border-[#d8cfbf] py-10 sm:py-12" id="features">
+        <div class="mb-8">
+          <p class="font-sans text-[.68rem] font-bold uppercase tracking-[.13em] text-[#a4432b]">Core concepts</p>
+          <h2 class="mt-1 font-sans text-3xl font-bold tracking-[-.035em] text-[#282820] sm:text-4xl">What Tailwind provides</h2>
+          <p class="mt-3 text-[#686457]">Small utility classes combine to create a responsive interface.</p>
+        </div>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="border border-[#d8cfbf] border-t-4 border-t-[#66765b] bg-[#fffdf8] p-5 shadow-[0_5px_14px_rgba(52,40,22,0.04)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(52,40,22,0.10)] motion-reduce:transition-none">
+            <span class="font-sans text-xl font-bold text-[#a4432b]">01</span><h3 class="mt-4 font-sans text-lg font-bold">Utilities</h3><p class="mt-2 text-sm leading-6 text-[#686457]">Composable classes control spacing, colors, typography and display.</p>
+          </article>
+          <article class="border border-[#d8cfbf] border-t-4 border-t-[#d3a94c] bg-[#fffdf8] p-5 shadow-[0_5px_14px_rgba(52,40,22,0.04)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(52,40,22,0.10)] motion-reduce:transition-none">
+            <span class="font-sans text-xl font-bold text-[#a4432b]">02</span><h3 class="mt-4 font-sans text-lg font-bold">Responsive variants</h3><p class="mt-2 text-sm leading-6 text-[#686457]">Prefixes such as <code>sm:</code>, <code>md:</code> and <code>lg:</code> apply styles at breakpoints.</p>
+          </article>
+          <article class="border border-[#d8cfbf] border-t-4 border-t-[#a4432b] bg-[#fffdf8] p-5 shadow-[0_5px_14px_rgba(52,40,22,0.04)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(52,40,22,0.10)] motion-reduce:transition-none">
+            <span class="font-sans text-xl font-bold text-[#a4432b]">03</span><h3 class="mt-4 font-sans text-lg font-bold">Flex and Grid</h3><p class="mt-2 text-sm leading-6 text-[#686457]">Layout utilities compose responsive structures directly in markup.</p>
+          </article>
+          <article class="border border-[#d8cfbf] border-t-4 border-t-[#8d987f] bg-[#fffdf8] p-5 shadow-[0_5px_14px_rgba(52,40,22,0.04)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_12px_26px_rgba(52,40,22,0.10)] motion-reduce:transition-none">
+            <span class="font-sans text-xl font-bold text-[#a4432b]">04</span><h3 class="mt-4 font-sans text-lg font-bold">Customization</h3><p class="mt-2 text-sm leading-6 text-[#686457]">Utility combinations provide detailed control over the page's appearance.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="grid items-center gap-8 bg-[#f2eee4] px-5 py-10 sm:px-8 sm:py-12 lg:grid-cols-2 lg:gap-12" id="approach">
+        <div>
+          <p class="font-sans text-[.68rem] font-bold uppercase tracking-[.13em] text-[#a4432b]">The approach</p>
+          <h2 class="mt-1 font-sans text-3xl font-bold tracking-[-.035em] text-[#282820] sm:text-4xl">Utility-first and flexible</h2>
+          <p class="mt-4 text-[#686457]">Tailwind uses composable classes instead of predefined visual components. Responsive variants let the same content rearrange as the viewport changes.</p>
+          <ul class="mt-5 grid gap-2 font-semibold">
+            <li>✓ Utility-first styling</li>
+            <li>✓ Responsive variants</li>
+            <li>✓ Flexbox and Grid utilities</li>
+            <li>✓ Fine-grained visual control</li>
+          </ul>
+        </div>
+        <div class="overflow-hidden border border-[#48483c] bg-[#29291f] shadow-[0_12px_30px_rgba(52,40,22,0.12)]">
+          <div class="bg-[#37372b] px-5 py-3 font-sans text-[.65rem] font-bold uppercase tracking-[.12em] text-[#e0c77f]">Tailwind markup</div>
+          <pre class="overflow-x-auto p-5 font-mono text-xs leading-7 text-[#e8dfc9] sm:p-7 sm:text-sm"><code>&lt;div class="grid gap-4
+sm:grid-cols-2
+lg:grid-cols-4"&gt;
+  &lt;article class="border p-5"&gt;
+    Responsive feature
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="my-8 border-l-4 border-[#a4432b] bg-[#f6f1e7] p-5 sm:p-7">
+        <p class="font-sans text-[.68rem] font-bold uppercase tracking-[.13em] text-[#a4432b]">Assessment observation</p>
+        <p class="mt-2 mb-0 text-[#686457]">Tailwind's utilities make custom details explicit at the element level. This offers precise control, while long utility lists can make markup denser and benefit from reusable patterns.</p>
+      </section>
+    </main>
+
+    <footer class="flex flex-col gap-3 border-t border-[#d8cfbf] pt-5 font-sans text-xs text-[#686457] sm:flex-row sm:items-center sm:justify-between">
+      <div><strong class="text-[#282820]">Gopal Aggarwal</strong><span class="block">SAP ID 590018885</span></div>
+      <span>Experiment 04 · Tailwind CSS</span>
+      <a href="index.html" class="text-[#782f20] underline-offset-4 hover:text-[#a4432b]">Assessment overview ↑</a>
+    </footer>
+  </div>
+</body>
+</html>
