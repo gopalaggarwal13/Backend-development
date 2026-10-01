@@ -54,6 +54,7 @@ This repository contains:
 |------------|-------------|--------|-----------|
 | **Experiment 1** | Create a Web Page using HTML5 Elements | [📄 View Report](./LAB/EXP-1/report.html) | [🌐 Open Project](./LAB/EXP-1/index.html) |
 | **Experiment 2** | Create a Web Page with all types of Cascading Style Sheets | 📄 [View Report](./LAB/EXP-2/report.html) | 🌐 [Open Project](./LAB/EXP-2/index.html) |
+| **Experiment 3** | Create a Responsive Web Page with HTML and CSS | 📄[View Report](LAB/EXP-3/README.md) | 🌐[Open Project](./LAB/EXP-3/index.html) |
 
 > More experiments will be added during the semester.
 
