@@ -47,17 +47,16 @@ This repository contains:
 - 🌐 GitHub Pages Website
 
 ---
-
 # 🧪 Lab Experiments
 
-| Experiment | Description | Report | Live Demo |
-|------------|-------------|--------|-----------|
-| **Experiment 1** | Create a Web Page using HTML5 Elements | [📄 View Report](./LAB/EXP-1/report.html) | [🌐 Open Project](./LAB/EXP-1/index.html) |
-| **Experiment 2** | Create a Web Page with all types of Cascading Style Sheets | 📄 [View Report](./LAB/EXP-2/report.html) | 🌐 [Open Project](./LAB/EXP-2/index.html) |
-| **Experiment 3** | Create a Responsive Web Page with HTML and CSS | 📄[View Report](LAB/EXP-3/README.md) | 🌐[Open Project](./LAB/EXP-3/index.html) |
-| **Experiment 4** | Create Responsive Web Pages with Bootstrap and Tailwind CSS | 📄[View Report](LAB/EXP-4/README.md) | 🌐[Open Project](LAB/EXP-4/index.html) |
-> More experiments will be added during the semester.
+| Experiment | Description | Course Outcome | Report | Live Demo |
+|------------|-------------|----------------|--------|-----------|
+| **Experiment 1** | Create a Web Page using HTML5 Elements | CO2 | [📄 View Report](./LAB/EXP-1/report.md) | [🌐 Open Project](./LAB/EXP-1/index.html) |
+| **Experiment 2** | Create a Web Page with all types of Cascading Style Sheets | CO2 | [📄 View Report](./LAB/EXP-2/report.md) | [🌐 Open Project](./LAB/EXP-2/index.html) |
+| **Experiment 3** | Create a Responsive Web Page with HTML and CSS | CO2 | [📄 View Report](./LAB/EXP-3/README.md) | [🌐 Open Project](./LAB/EXP-3/index.html) |
+| **Experiment 4** | Create Responsive Web Pages with Bootstrap and Tailwind CSS | CO2 | [📄 View Report](./LAB/EXP-4/README.md) | [🌐 Open Project](./LAB/EXP-4/index.html) |
 
+> More experiments will be added during the semester.
 ---
 
 # 💻 Theory Projects
