@@ -13,22 +13,19 @@ layout: default
 
 ---
 
-### 👨‍🎓 Student Details
+## 👨‍🎓 Student Information
 
-| |
-|:---|
-| **Name:** Gopal Aggarwal |
-| **SAP ID:** 590018885 |
-| **Course:** Backend Development |
-| **University:** UPES Dehradun |
+| Details | Information |
+|----------|-------------|
+| **Name** | Gopal Aggarwal |
+| **SAP ID** | 590018885 |
+| **Course** | Backend Development |
+| **Program** | B.Tech CSE |
+| **University** | UPES Dehradun |
+| **GitHub Repository** | https://github.com/gopalaggarwal13/backend-development |
+| **Live Website** | https://gopalaggarwal13.github.io/backend-development/ |
 
-🌐 **Live Repository**
-
-👉 **https://gopalaggarwal13.github.io/backend-development/**
-
-📂 **GitHub Repository**
-
-👉 **https://github.com/gopalaggarwal13/backend-development**
+---
 
 </div>
 
