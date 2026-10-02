@@ -52,7 +52,8 @@ This repository contains all coursework related to the **Backend Development** s
 | 3 | Create a Responsive Web Page with HTML and CSS | CO2 | 📄[View Report](LAB/EXP-3/README.md) | 🌐[Open Project](./LAB/EXP-3/index.html) |
 | 4 | Create Responsive Web Pages with Bootstrap and Tailwind CSS |CO2 | 📄[View Report](LAB/EXP-4/README.md) | 🌐[Open Project](LAB/EXP-4/index.html) |
 | 5 | Programs to Demonstrate JavaScript Array, Object and Functions | CO2 | [📄 View Report](./LAB/EXP-5/README.md) | [🌐 Open Project](./LAB/EXP-5/index.html) |
-| 12 | Node.js, Express.js, and EJS Templating | CO2 | [📄 Report](./LAB/EXP-12/README.md) | [🖼️ Screenshots](./LAB/EXP-12/README.md) |
+| 12 | Node.js, Express.js, and EJS Templating | CO2 | [📄View Report](./LAB/EXP-12/README.md) | [🖼️ Screenshots](./LAB/EXP-12/README.md) |
+| 12-B  | Session-Based Login and To-Do List Manager | CO2 | [📄 View Report](./LAB/EXP-12-B/README.md) | [🖼️ Screenshots](./LAB/EXP-12-B/screenshots/) |
 > More experiments will be added throughout the semester.
 
 ---
