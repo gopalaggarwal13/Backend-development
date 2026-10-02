@@ -11,6 +11,18 @@ layout: default
 
 **Application:** [`app.js`](./app.js) · **EJS view:** [`views/index.ejs`](./views/index.ejs) · **Stylesheet:** [`public/style.css`](./public/style.css)
 
+## Screenshots
+
+| Page | Screenshot |
+|---|---|
+| Experiment 12 overview | [View screenshot](./screenshots/1.png) |
+| Task directory | [View screenshot](./screenshots/2.png) |
+| Task 1 — Basic Server | [View screenshot](./screenshots/3.png) |
+| Task 2 — Calculator API | [View screenshot](./screenshots/4.png) |
+| Task 3 — Student Management | [View screenshot](./screenshots/5.png) |
+| Task 4 — EJS Timetable | [View screenshot](./screenshots/6.png) |
+| Task 5 — Student Registration | [View screenshot](./screenshots/7.png) |
+
 ---
 
 ## 1. Aim
