@@ -49,58 +49,16 @@ This repository contains:
 ---
 # 🧪 Lab Experiments
 
-<table>
-  <thead>
-    <tr>
-      <th>Experiment</th>
-      <th>Description</th>
-      <th>Course Outcome</th>
-      <th>Report</th>
-      <th>Demo / Evidence</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Experiment 1</strong></td>
-      <td>Create a Web Page using HTML5 Elements</td>
-      <td>CO2</td>
-      <td><a href="./LAB/EXP-1/report.md">📄 View Report</a></td>
-      <td><a href="./LAB/EXP-1/index.html">🌐 Open Project</a></td>
-    </tr>
+| Experiment | Description | Course Outcome | Report | Live Demo |
+|------------|-------------|----------------|--------|-----------|
+| **Experiment 1** | Create a Web Page using HTML5 Elements | CO2 | [📄 View Report](./LAB/EXP-1/report.md) | [🌐 Open Project](./LAB/EXP-1/index.html) |
+| **Experiment 2** | Create a Web Page with all types of Cascading Style Sheets | CO2 | [📄 View Report](./LAB/EXP-2/report.md) | [🌐 Open Project](./LAB/EXP-2/index.html) |
+| **Experiment 3** | Create a Responsive Web Page with HTML and CSS | CO2 | [📄 View Report](./LAB/EXP-3/README.md) | [🌐 Open Project](./LAB/EXP-3/index.html) |
+| **Experiment 4** | Create Responsive Web Pages with Bootstrap and Tailwind CSS | CO2 | [📄 View Report](./LAB/EXP-4/README.md) | [🌐 Open Project](./LAB/EXP-4/index.html) |
+| **Experiment 12**  | Node.js, Express.js, and EJS Templating | CO2 | [📄 Report](./LAB/EXP-12/README.md) | [🖼️ Screenshots](./LAB/EXP-12/README.md) |
 
-    <tr>
-      <td><strong>Experiment 2</strong></td>
-      <td>Create a Web Page with all types of Cascading Style Sheets</td>
-      <td>CO2</td>
-      <td><a href="./LAB/EXP-2/report.md">📄 View Report</a></td>
-      <td><a href="./LAB/EXP-2/index.html">🌐 Open Project</a></td>
-    </tr>
-
-    <tr>
-      <td><strong>Experiment 3</strong></td>
-      <td>Create a Responsive Web Page with HTML and CSS</td>
-      <td>CO2</td>
-      <td><a href="./LAB/EXP-3/README.md">📄 View Report</a></td>
-      <td><a href="./LAB/EXP-3/index.html">🌐 Open Project</a></td>
-    </tr>
-
-    <tr>
-      <td><strong>Experiment 4</strong></td>
-      <td>Create Responsive Web Pages with Bootstrap and Tailwind CSS</td>
-      <td>CO2</td>
-      <td><a href="./LAB/EXP-4/README.md">📄 View Report</a></td>
-      <td><a href="./LAB/EXP-4/index.html">🌐 Open Project</a></td>
-    </tr>
-
-    <tr>
-      <td><strong>Experiment 12</strong></td>
-      <td>Node.js, Express.js, and EJS Templating</td>
-      <td>CO2</td>
-      <td><a href="./LAB/EXP-12/README.md">📄 Report</a></td>
-      <td><a href="./LAB/EXP-12/README.md">🖼️ Screenshots</a></td>
-    </tr>
-  </tbody>
-</table>
+> More experiments will be added during the semester.
+---
 
 # 💻 Theory Projects
 
