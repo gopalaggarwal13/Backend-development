@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create an account for your session-based Gen Z to-do list in Experiment 12-B.">
+  <title>Create account · Sidequest — Experiment 12-B</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-theme="<%= theme %>">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/login" aria-label="Sidequest home"><span class="brand-mark" aria-hidden="true">✳</span> sidequest<span class="brand-period">.</span></a>
+      <p class="topbar-note">EXP-12B <span>·</span> backend lab</p>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to day theme">☀️ <span>Day mode</span></button>
+        <a class="nav-link" href="/login">Sign in <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-layout">
+    <section class="auth-hero register-hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> new account, fresh slate</p>
+        <h1 id="hero-title">Your goals<br>called. They<br>want a <span class="headline-accent">plan.</span></h1>
+        <p class="hero-description">Build a little momentum. Make an account, then turn the “someday” stuff into doable next steps.</p>
+        <div class="sticker-row" aria-label="App highlights">
+          <span class="sticker sticker-lime">study smarter</span>
+          <span class="sticker sticker-pink">touch grass too</span>
+        </div>
+      </div>
+      <div class="hero-orbit register-orbit" aria-hidden="true">
+        <span class="orbit-ring"></span><span class="orbit-spark spark-one">✦</span><span class="orbit-spark spark-two">✳</span>
+        <div class="orbit-note"><span>plot twist:</span><strong>you got this</strong><i>✦</i></div>
+        <span class="orbit-caption">PLAN A LITTLE · LIVE A LOT</span>
+      </div>
+      <div class="hero-footnote"><span>✳</span> small wins count. especially yours.</div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="form-title">
+      <div class="card-topline"><span class="card-index">00 / CREATE ACCOUNT</span><span class="card-emoji" aria-hidden="true">🌱</span></div>
+      <h2 id="form-title">Let’s get you set.</h2>
+      <p class="card-intro">Your account is a classroom demo stored in this running app.</p>
+
+      <% if (error) { %><div class="notice notice-error" role="alert"><%= error %></div><% } %>
+
+      <form action="/register" method="POST" class="auth-form">
+        <label for="username">Pick a username</label>
+        <input id="username" type="text" name="username" value="<%= username %>" placeholder="e.g. gopal.codes" autocomplete="username" minlength="3" maxlength="32" pattern="[A-Za-z0-9._-]{3,32}" aria-describedby="username-help" required>
+        <small class="field-help" id="username-help">3–32 characters: letters, numbers, dots, underscores or hyphens.</small>
+
+        <label for="password">Make a password</label>
+        <input id="password" type="password" name="password" placeholder="at least 8 characters" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="password-help" required>
+        <small class="field-help" id="password-help">Stored as a salted hash in memory for this demo.</small>
+
+        <button class="button button-primary form-submit" type="submit">Create my account <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="account-switch">Already have a login? <a href="/login">Sign in <span aria-hidden="true">↗</span></a></p>
+      <p class="session-hint"><span aria-hidden="true">◉</span> Your to-dos are private to your session</p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>EXPERIMENT 12-B</span><span>express sessions / personal task manager</span><span>GOPAL AGGARWAL · SAP ID 590018885</span></footer>
+</body>
+</html>

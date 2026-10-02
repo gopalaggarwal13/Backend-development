@@ -1,0 +1,1 @@
+{"name":"exp-12-b-session-app","version":"1.0.0","description":"Experiment 12-B - Session based login and todo application","main":"app.js","scripts":{"start":"node app.js"},"dependencies":{"ejs":"^3.1.10","express":"^5.2.1","express-session":"^1.18.2"}}

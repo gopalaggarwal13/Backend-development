@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A session-based to-do dashboard for Experiment 12-B.">
+  <title>My sidequests · Experiment 12-B</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-theme="<%= theme %>">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/dashboard" aria-label="Sidequest dashboard"><span class="brand-mark" aria-hidden="true">✳</span> sidequest<span class="brand-period">.</span></a>
+      <p class="topbar-note">YOUR DAY, <span>REIMAGINED</span></p>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to day theme">☀️ <span>Day mode</span></button>
+        <span class="user-chip"><span class="avatar-dot" aria-hidden="true"><%= username.slice(0, 1).toUpperCase() %></span> hey, <strong><%= username %></strong></span>
+        <form action="/logout" method="POST"><button class="logout-button" type="submit">Log out <span aria-hidden="true">↗</span></button></form>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-shell">
+    <section class="dashboard-hero" aria-labelledby="dashboard-title">
+      <div class="dashboard-hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> your personal productivity playground</p>
+        <h1 id="dashboard-title">Let’s make today<br><span class="headline-accent">count for something.</span></h1>
+        <p class="hero-description">Big goals, tiny steps. Add the next thing, then give yourself credit for getting it done.</p>
+        <div class="hero-meta"><span class="session-pill"><span aria-hidden="true">◉</span> SESSION IS LIVE</span><span class="meta-divider">/</span><span>your tasks stay with this session</span></div>
+      </div>
+      <div class="dashboard-doodle" aria-hidden="true">
+        <span class="doodle-star star-a">✳</span><span class="doodle-star star-b">✦</span>
+        <div class="doodle-card"><span>today’s vibe</span><strong>one thing<br>at a time</strong><i>✓</i></div>
+        <span class="doodle-caption">PROGRESS OVER PERFECT</span>
+      </div>
+    </section>
+
+    <% if (flash) { %><div class="notice notice-<%= flash.kind %> dashboard-notice" role="status"><%= flash.message %></div><% } %>
+
+    <section class="stats-grid" aria-label="Task summary">
+      <article class="stat-card stat-total"><span class="stat-label">ON YOUR LIST</span><strong><%= todos.length %></strong><span class="stat-foot">all the things ✳</span></article>
+      <article class="stat-card stat-done"><span class="stat-label">CHECKED OFF</span><strong><%= completedCount %></strong><span class="stat-foot">look at you go ✦</span></article>
+      <article class="stat-card stat-left"><span class="stat-label">STILL IN PLAY</span><strong><%= todos.length - completedCount %></strong><span class="stat-foot">one step at a time →</span></article>
+      <article class="stat-card stat-streak"><span class="stat-label">THE VIBE</span><strong><%= progressPercent %><small>%</small></strong><span class="stat-foot">progress, not perfection</span></article>
+    </section>
+
+    <section class="progress-card" aria-label="Completion progress">
+      <div class="progress-heading"><div><span class="eyebrow">YOUR LITTLE WINS</span><h2>Momentum looks good on you.</h2></div><span class="progress-score"><%= progressPercent %><small>%</small></span></div>
+      <div class="progress-track" role="progressbar" aria-label="Tasks completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="<%= progressPercent %>"><span style="width: <%= progressPercent %>%"></span></div>
+      <p><%= completedCount %> of <%= todos.length %> sidequests complete. Keep the streak in your own way.</p>
+    </section>
+
+    <div class="workspace-grid">
+      <section class="compose-card" aria-labelledby="compose-title">
+        <div class="section-heading"><span class="section-number">01</span><span class="eyebrow">GET IT OUT OF YOUR HEAD</span></div>
+        <h2 id="compose-title">Add a sidequest<span class="headline-accent">.</span></h2>
+        <p class="card-intro">Make it specific. Make it doable. Make it yours.</p>
+        <form action="/todos" method="POST" class="todo-form">
+          <label for="todoItem">What’s the next move?</label>
+          <input id="todoItem" type="text" name="todoItem" placeholder="e.g. finish the Express sessions notes" maxlength="160" required>
+          <div class="select-row">
+            <div><label for="category">Where does it fit?</label><select id="category" name="category"><option value="study">📚 Study</option><option value="life">🧺 Life admin</option><option value="work">💻 Work</option><option value="wellness">🌿 Wellness</option></select></div>
+            <div><label for="priority">Energy level</label><select id="priority" name="priority"><option value="low">Low-key</option><option value="medium" selected>Normal</option><option value="high">Big focus</option></select></div>
+          </div>
+          <button class="button button-primary form-submit" type="submit">Add to my list <span aria-hidden="true">＋</span></button>
+          <p class="form-side-note"><span aria-hidden="true">✦</span> Keep it under 160 characters.</p>
+        </form>
+        <div class="mini-mantra"><span aria-hidden="true">“</span><p>Done is a direction.<br>Perfect is a trap.</p><span class="mantra-spark" aria-hidden="true">✳</span></div>
+      </section>
+
+      <section class="todo-board" aria-labelledby="list-title">
+        <div class="board-heading">
+          <div><div class="section-heading"><span class="section-number">02</span><span class="eyebrow">YOUR SESSION, YOUR LIST</span></div><h2 id="list-title">The sidequest board<span class="headline-accent">.</span></h2></div>
+          <span class="board-count"><%= String(todos.length).padStart(2, "0") %><small> tasks</small></span>
+        </div>
+
+        <nav class="filter-tabs" aria-label="Filter tasks by completion">
+          <a href="/dashboard?filter=all&amp;category=<%= selectedCategory %>" class="<%= selectedFilter === 'all' ? 'is-current' : '' %>" aria-current="<%= selectedFilter === 'all' ? 'page' : 'false' %>">Everything</a>
+          <a href="/dashboard?filter=active&amp;category=<%= selectedCategory %>" class="<%= selectedFilter === 'active' ? 'is-current' : '' %>" aria-current="<%= selectedFilter === 'active' ? 'page' : 'false' %>">In progress</a>
+          <a href="/dashboard?filter=done&amp;category=<%= selectedCategory %>" class="<%= selectedFilter === 'done' ? 'is-current' : '' %>" aria-current="<%= selectedFilter === 'done' ? 'page' : 'false' %>">Done</a>
+        </nav>
+        <form action="/dashboard" method="GET" class="category-filter">
+          <input type="hidden" name="filter" value="<%= selectedFilter %>">
+          <label for="categoryFilter">Filter by</label>
+          <select id="categoryFilter" name="category">
+            <option value="all" <%= selectedCategory === 'all' ? 'selected' : '' %>>All categories</option>
+            <% categories.forEach((category) => { %><option value="<%= category %>" <%= selectedCategory === category ? 'selected' : '' %>><%= category.charAt(0).toUpperCase() + category.slice(1) %></option><% }) %>
+          </select>
+          <button type="submit" class="filter-button">Apply</button>
+          <% if (selectedFilter !== 'all' || selectedCategory !== 'all') { %><a class="reset-link" href="/dashboard">Reset</a><% } %>
+        </form>
+
+        <% if (visibleTodos.length === 0) { %>
+          <div class="empty-state">
+            <span class="empty-icon" aria-hidden="true"><%= todos.length === 0 ? '🛸' : '🪄' %></span>
+            <h3><%= todos.length === 0 ? 'The board is yours.' : 'No tasks in this filter.' %></h3>
+            <p><%= todos.length === 0 ? 'Add your first sidequest and get that idea out of your head.' : 'Try another category or switch to a different view.' %></p>
+          </div>
+        <% } else { %>
+          <ol class="todo-list" aria-label="Your to-do tasks">
+            <% visibleTodos.forEach((todo, index) => { %>
+              <li class="todo-item <%= todo.completed ? 'is-complete' : '' %>">
+                <span class="todo-index" aria-hidden="true"><%= String(index + 1).padStart(2, '0') %></span>
+                <div class="todo-content">
+                  <p class="todo-text"><%= todo.text %></p>
+                  <div class="todo-tags"><span class="category-tag tag-<%= todo.category %>"><%= todo.category %></span><span class="priority-tag priority-<%= todo.priority %>"><%= todo.priority === 'high' ? '⚡ focus' : todo.priority === 'low' ? '☁ low-key' : '✳ normal' %></span></div>
+                </div>
+                <div class="todo-actions">
+                  <form action="/todos/complete/<%= todo.id %>" method="POST"><button class="complete-button" type="submit" aria-label="<%= todo.completed ? 'Mark task as active' : 'Mark task as done' %>"><span aria-hidden="true"><%= todo.completed ? '↶' : '✓' %></span><span><%= todo.completed ? 'Undo' : 'Done' %></span></button></form>
+                  <form action="/todos/delete/<%= todo.id %>" method="POST"><button class="delete-button" type="submit" aria-label="Remove task: <%= todo.text %>">✕</button></form>
+                </div>
+              </li>
+            <% }) %>
+          </ol>
+        <% } %>
+        <p class="board-footnote"><span aria-hidden="true">◉</span> This list is saved to your current server session.</p>
+      </section>
+    </div>
+
+    <section class="lab-note" aria-labelledby="lab-note-title">
+      <div class="lab-note-icon" aria-hidden="true">✳</div>
+      <div><p class="eyebrow">WHAT’S HAPPENING UNDER THE HOOD</p><h2 id="lab-note-title">Express sessions make this board personal.</h2><p>Sign-in protects the dashboard. Each browser session has its own task array, and logging out destroys that session. The theme choice lives in a small preference cookie.</p></div>
+      <span class="lab-note-stamp">EXP<br>12-B</span>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>EXPERIMENT 12-B</span><span>one task at a time · you’ve got this</span><span>GOPAL AGGARWAL · SAP ID 590018885</span></footer>
+</body>
+</html>
