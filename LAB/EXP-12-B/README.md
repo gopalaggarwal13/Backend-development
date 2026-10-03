@@ -26,6 +26,14 @@ Click a screenshot link to open the full image.
 | Dashboard — overview and progress | [Open screenshot](./screenshots/4.png) |
 | Dashboard — task board and session details | [Open screenshot](./screenshots/5.png) |
 
+
+![Sign-in page — night theme](./screenshots/1.png)
+![Sign-in page — night theme](./screenshots/2.png)
+![Sign-in page — night theme](./screenshots/3.png)
+![Sign-in page — night theme](./screenshots/4.png)
+![Sign-in page — night theme](./screenshots/5.png)
+
+
 ---
 
 ## 1. Aim
